@@ -1,0 +1,43 @@
+.dialogsBlock {
+    position: relative;
+    display: flex;
+}
+
+.dialogsItems {
+    flex: 0 0 200px;
+    padding: 10px;
+}
+
+.dialog {
+    position: relative;
+    border: 1px solid #666;
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dialog a {
+    text-decoration: none;
+
+}
+
+.dialog.active {
+    color: blue;
+}
+
+.messages {
+    position: relative;
+    flex: 1;
+    padding: 10px;
+}
+
+.avatarWrap {
+    position: relative;
+    margin: 0 10px 0 0;
+}
+
+.avatarWrap img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}

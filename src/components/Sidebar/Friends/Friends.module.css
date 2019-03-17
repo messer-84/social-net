@@ -1,0 +1,24 @@
+.friendsBlock{
+    position: relative;
+}
+.friendsList{
+    position: relative;
+    display: flex;
+}
+
+.friendsItem{
+    position: relative;
+}
+
+
+
+.avatarWrap{
+  position: relative;
+  margin: 0 10px 0 0;
+}
+.avatarWrap img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+

@@ -1,0 +1,17 @@
+.footer {
+    position: relative;
+    height: 70px;
+    width: 100%;
+    background: #231F20;
+}
+.footer:before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 0;
+    height: 100%;
+    background: #231f20;
+    width: 3000px;
+    transform: translate(-50%, 0);
+}
+
