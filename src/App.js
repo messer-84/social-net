@@ -4,29 +4,27 @@ import {Route} from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from "./components/Footer/Footer";
 import Profile from './components/Profile/Profile';
-import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Sidebar from "./components/Sidebar/Sidebar";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
-  const {state} = props;
-  const {sidebarReducer} = state;
-  const {store} = props;
-  // debugger;
+  const {state: {sidebar}, store} = props;
+
   return (
     <div className='app-wrapper'>
       <Header/>
       <div className="main">
-        <Sidebar state={sidebarReducer}/>
+        <Sidebar state={sidebar}/>
         <div className="app-wrapper-content">
           <Route path="/profile" render={() => (
-            <Profile store={store} />
+            <Profile store={store}/>
           )}
           />
           <Route path="/messages" render={() => (
-            <Dialogs store={store} />
+            <DialogsContainer store={store}/>
           )}
           />
           <Route path="/news" component={News}/>

@@ -4,17 +4,13 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = props => {
-  const {store, store:{dispatch}} = props;
-  const {posts, newPostText} = store.getState().profileReducer;
+  const {store} = props;
 
   return (
     <div className={s.content}>
       <ProfileInfo/>
       <MyPostsContainer
         store={store}
-        dispatch={dispatch.bind(store)}
-        posts={posts}
-        newPostText={newPostText}
       />
     </div>
   )

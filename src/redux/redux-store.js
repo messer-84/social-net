@@ -4,9 +4,9 @@ import sidebarReducer from "./sidebarReducer";
 import dialogsReducer from "./dialogsReducer";
 
 const reducers = combineReducers({
-  profileReducer,
-  dialogsReducer,
-  sidebarReducer
+  profilePage: profileReducer,
+  dialogsPage: dialogsReducer,
+  sidebar: sidebarReducer
 });
 
 const store = createStore(reducers);

@@ -3,26 +3,21 @@ import PropTypes from 'prop-types';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from "./Message/Message";
-import {
-  addMessageActionCreator,
-  updateNewMessageTextActionCreator
-} from '../../redux/dialogsReducer'
-
 
 const Dialogs = (props) => {
-  const {store, store: {dispatch}} = props;
-  const {dialogs, messages, newMessageText} = store.getState().dialogsReducer;
+  const {addMessage, newMessageChange, state} = props;
+  const {dialogs, messages, newMessageText} = state;
 
 
   const newMsgElement = React.createRef();
 
-  const handleAddMessage = () => {
-    dispatch.call(store, addMessageActionCreator());
+  const onAddMessage = () => {
+    addMessage();
   };
 
   const onMessageChange = () => {
     const text = newMsgElement.current.value;
-    dispatch.call(store, updateNewMessageTextActionCreator(text));
+    newMessageChange(text);
   };
 
   return (
@@ -52,7 +47,7 @@ const Dialogs = (props) => {
             />
           </div>
           <div>
-            <button onClick={handleAddMessage}>Add message</button>
+            <button onClick={onAddMessage}>Add message</button>
           </div>
         </div>
       </div>
