@@ -1,5 +1,9 @@
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+import sidebarReducer from "./sidebarReducer";
+
 const store = {
-  _subscriber(){
+  _subscriber() {
     console.log('no subscribers');
   },
   _state: {
@@ -16,7 +20,7 @@ const store = {
           likesCount: 3
         },
       ],
-      newPostText: 'Max'
+      newPostText: ''
     },
     dialogsPage: {
       messages: [
@@ -37,11 +41,11 @@ const store = {
     },
     sidebar: {
       links: [
-        {id: 1, title: 'Profile', url:'profile'},
-        {id: 2, title: 'Messages', url:'messages'},
-        {id: 3, title: 'News', url:'news'},
-        {id: 4, title: 'Music', url:'music'},
-        {id: 5, title: 'Settings', url:'settings'}
+        {id: 1, title: 'Profile', url: 'profile'},
+        {id: 2, title: 'Messages', url: 'messages'},
+        {id: 3, title: 'News', url: 'news'},
+        {id: 4, title: 'Music', url: 'music'},
+        {id: 5, title: 'Settings', url: 'settings'}
       ],
       friends: [
         {id: 1, name: 'Dimych', status: 'online'},
@@ -53,48 +57,26 @@ const store = {
       ]
     }
   },
-  getState(){
+  getState() {
     return this._state;
   },
-  subscribe(observer){
+  subscribe(observer) {
     this._subscriber = observer;
   },
-  updateNewPostText (newText) {
-    this._state.profilePage.newPostText = newText || '';
-    this._subscriber(this);
 
-  },
-  addPost () {
-    const state = this.getState();
-    const getPostLength = state.profilePage.posts.length + 1;
-    let newPost = {
-      id: getPostLength,
-      message: state.profilePage.newPostText,
-      likesCount: 0
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this._subscriber(this);
 
-  },
-  addMessage (){
-    const state = this.getState();
-    const getPostLength = state.dialogsPage.messages.length + 1;
-    let newMessage = {
-      id: getPostLength,
-      message: state.dialogsPage.newMessageText,
-    };
-    this._state.dialogsPage.messages.push(newMessage);
-    this._state.dialogsPage.newMessageText = '';
-    this._subscriber(this);
+  dispatch(action) {
 
-  },
-  updateNewMessageText (newText) {
-    this._state.dialogsPage.newMessageText = newText || '';
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
     this._subscriber(this);
   }
-
 };
+
+
+
 
 
 export default store;

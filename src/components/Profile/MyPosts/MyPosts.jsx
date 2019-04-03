@@ -4,15 +4,16 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-  const {postData, newPostText,  store} = props;
+  const {updateNewPostText, addPost, posts, newPostText} = props;
   let newPostElement = React.createRef();
 
-  const handleAddPost = () => {
-    store.addPost.call(store);
+
+  const onAddPost = () => {
+    addPost();
   };
   const onPostChange = () => {
     const text = newPostElement.current.value;
-    store.updateNewPostText.call(store,text);
+    updateNewPostText(text);
   };
 
 
@@ -28,11 +29,11 @@ const MyPosts = (props) => {
           />
         </div>
         <div>
-          <button onClick={handleAddPost}>Add post</button>
+          <button onClick={onAddPost}>Add post</button>
         </div>
       </div>
       <div className={s.posts}>
-        {postData.map(item => {
+        {posts.map(item => {
           return (
             <Post
               key={item.id}

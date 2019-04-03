@@ -1,17 +1,19 @@
 import React from 'react';
 import s from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = props => {
-  const {posts, newPostText} = props.profilePage;
-  const { store} = props;
+  const {store, store:{dispatch}} = props;
+  const {posts, newPostText} = store.getState().profileReducer;
+
   return (
     <div className={s.content}>
       <ProfileInfo/>
-      <MyPosts
+      <MyPostsContainer
         store={store}
-        postData={posts}
+        dispatch={dispatch.bind(store)}
+        posts={posts}
         newPostText={newPostText}
       />
     </div>

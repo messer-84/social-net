@@ -17,6 +17,7 @@ const Friends = (props) => {
               />
             )
           }
+          return null;
         })}
       </div>
     </div>

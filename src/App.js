@@ -11,27 +11,22 @@ import Settings from "./components/Settings/Settings";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 const App = (props) => {
+  const {state} = props;
+  const {sidebarReducer} = state;
   const {store} = props;
-  const state = props.store.getState();
-  const {profilePage, dialogsPage, sidebar} = state;
+  // debugger;
   return (
     <div className='app-wrapper'>
       <Header/>
       <div className="main">
-        <Sidebar state={sidebar}/>
+        <Sidebar state={sidebarReducer}/>
         <div className="app-wrapper-content">
           <Route path="/profile" render={() => (
-            <Profile
-              profilePage={profilePage}
-              store={props.store}
-            />
+            <Profile store={store} />
           )}
           />
           <Route path="/messages" render={() => (
-            <Dialogs
-              store={props.store}
-              dialogsPage={dialogsPage}
-            />
+            <Dialogs store={store} />
           )}
           />
           <Route path="/news" component={News}/>

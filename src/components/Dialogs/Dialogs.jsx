@@ -1,23 +1,28 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from "./Message/Message";
+import {
+  addMessageActionCreator,
+  updateNewMessageTextActionCreator
+} from '../../redux/dialogsReducer'
 
 
 const Dialogs = (props) => {
-  const { store } = props;
-  const {dialogs, messages, newMessageText} = props.dialogsPage;
+  const {store, store: {dispatch}} = props;
+  const {dialogs, messages, newMessageText} = store.getState().dialogsReducer;
+
 
   const newMsgElement = React.createRef();
 
   const handleAddMessage = () => {
-    store.addMessage.call(store);
+    dispatch.call(store, addMessageActionCreator());
   };
 
   const onMessageChange = () => {
     const text = newMsgElement.current.value;
-    store.updateNewMessageText.call(store, text);
+    dispatch.call(store, updateNewMessageTextActionCreator(text));
   };
 
   return (
@@ -55,4 +60,10 @@ const Dialogs = (props) => {
   )
 };
 
+
+Dialogs.propTypes = {
+  dialogsPage: PropTypes.object
+};
+
 export default Dialogs;
+
