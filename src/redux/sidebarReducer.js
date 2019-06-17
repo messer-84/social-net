@@ -1,4 +1,3 @@
-
 const initialState = {
   links: [
     {id: 1, title: 'Profile', url: 'profile'},
@@ -18,7 +17,6 @@ const initialState = {
 };
 
 const sidebarReducer = (state = initialState, action) => {
-
   return state;
 };
 

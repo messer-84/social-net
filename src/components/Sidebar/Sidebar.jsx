@@ -2,13 +2,11 @@ import React from 'react';
 import s from './Sidebar.module.css';
 import Navbar from "./Navbar/Navbar";
 import Friends from "./Friends/Friends";
-import StoreContext from '../../StoreContext';
+import store from '../../redux/redux-store';
 
 
 const Sidebar = (props) => {
-  return (
-    <StoreContext.Consumer>{
-      store => {
+
         const {links, friends} = store.getState().sidebar;
 
         return (
@@ -17,10 +15,7 @@ const Sidebar = (props) => {
             <Friends friends={friends}/>
           </div>
         )
-      }
 
-    }</StoreContext.Consumer>
-  )
 };
 
 export default Sidebar;
