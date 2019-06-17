@@ -11,22 +11,14 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
-  const {state: {sidebar}, store} = props;
-
   return (
     <div className='app-wrapper'>
       <Header/>
       <div className="main">
-        <Sidebar state={sidebar}/>
+        <Sidebar/>
         <div className="app-wrapper-content">
-          <Route path="/profile" render={() => (
-            <Profile store={store}/>
-          )}
-          />
-          <Route path="/messages" render={() => (
-            <DialogsContainer store={store}/>
-          )}
-          />
+          <Route path="/profile" component={Profile}/>
+          <Route path="/messages" render={DialogsContainer}/>
           <Route path="/news" component={News}/>
           <Route path="/music" component={Music}/>
           <Route path="/settings" component={Settings}/>
