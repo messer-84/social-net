@@ -10,7 +10,7 @@ import Settings from "./components/Settings/Settings";
 import Sidebar from "./components/Sidebar/Sidebar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-const App = (props) => {
+const App = () => {
   return (
     <div className='app-wrapper'>
       <Header/>
@@ -18,7 +18,7 @@ const App = (props) => {
         <Sidebar/>
         <div className="app-wrapper-content">
           <Route path="/profile" component={Profile}/>
-          <Route path="/messages" render={DialogsContainer}/>
+          <Route path="/messages" component={DialogsContainer}/>
           <Route path="/news" component={News}/>
           <Route path="/music" component={Music}/>
           <Route path="/settings" component={Settings}/>
@@ -26,7 +26,6 @@ const App = (props) => {
       </div>
       <Footer/>
     </div>
-
   );
 };
 

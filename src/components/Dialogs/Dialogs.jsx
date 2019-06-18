@@ -5,10 +5,8 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  const {addMessage, newMessageChange, state} = props;
-  const {dialogs, messages, newMessageText} = state;
-
-
+  const {addMessage, newMessageChange, dialogsPage} = props;
+  const {dialogs, messages, newMessageText} = dialogsPage;
   const newMsgElement = React.createRef();
 
   const onAddMessage = () => {
