@@ -20,6 +20,7 @@ const App = () => {
         <div className="app-wrapper-content">
           <Route path="/profile" component={ProfileContainer}/>
           <Route path="/messages" component={DialogsContainer}/>
+          <Route path="/users" components={UsersContainer}/>
           <Route path="/news" component={News}/>
           <Route path="/music" component={Music}/>
           <Route path="/settings" component={Settings}/>
