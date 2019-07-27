@@ -3,8 +3,8 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  // debugger;
   const {updateNewPostText, addPost, posts, newPostText} = props;
+
   let newPostElement = React.createRef();
   const onAddPost = () => {
     addPost();

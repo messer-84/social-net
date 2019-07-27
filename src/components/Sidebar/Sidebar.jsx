@@ -5,17 +5,14 @@ import Friends from "./Friends/Friends";
 import store from '../../redux/redux-store';
 
 
-const Sidebar = (props) => {
-
+const Sidebar = () => {
         const {links, friends} = store.getState().sidebar;
-
         return (
           <div className={s.sidebar}>
             <Navbar links={links}/>
             <Friends friends={friends}/>
           </div>
         )
-
 };
 
 export default Sidebar;

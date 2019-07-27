@@ -11,10 +11,7 @@ const Friends = (props) => {
         {friends.map(friend => {
           if (friend.status === 'online') {
             return (
-              <FriendsItem
-                key={friend.id}
-                friend={friend}
-              />
+              <FriendsItem key={friend.id} friend={friend} />
             )
           }
           return null;

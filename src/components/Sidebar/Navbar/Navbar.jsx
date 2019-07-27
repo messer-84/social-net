@@ -4,7 +4,7 @@ import NavbarItem from "./NavbarItem/NavbarItem";
 
 const Navbar = (props) => {
   const {links} = props;
-  // debugger;
+
   return (
     <nav className={s.nav}>
       {links.map(link =>

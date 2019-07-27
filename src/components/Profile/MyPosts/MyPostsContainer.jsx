@@ -13,15 +13,9 @@ let mapStateToProps = (state) => {
   }
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    addPost: () => {
-      dispatch(addPostActionCreator());
-    },
-    updateNewPostText: (text) => {
-      dispatch(updateNewPostTextActionCreator(text));
-    }
-  }
+let mapDispatchToProps = {
+    addPost: addPostActionCreator,
+    updateNewPostText: updateNewPostTextActionCreator,
 };
 
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
