@@ -10,7 +10,6 @@ const Sidebar = (props) => {
       <Navbar links={links}/>
       <Friends friends={friends}/>
     </div>
-
   )
 };
 
