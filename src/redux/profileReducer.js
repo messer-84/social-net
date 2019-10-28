@@ -1,4 +1,4 @@
-import {profileAPI} from "../api/api";
+import {usersAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
@@ -49,7 +49,7 @@ const profileReducer = (state = initialState, action) => {
     case SET_USER_PROFILE: {
       return {
         ...state,
-        profile: action.payload
+        profile: action.profile
       }
     }
     default:
@@ -60,8 +60,8 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const addPostActionCreator = () => ({type: ADD_POST});
-export const setUserProfileSuccess = (profile) => {
-  return {type: SET_USER_PROFILE, payload: profile}
+export const setUserProfileAC = (profile) => {
+  return {type: SET_USER_PROFILE, profile}
 };
 
 export const updateNewPostTextActionCreator = (text) => ({
@@ -69,12 +69,19 @@ export const updateNewPostTextActionCreator = (text) => ({
   newText: text
 });
 
-export const setUserProfile = () => {
-  return (dispatch) => {
-    profileAPI.setUserProfile().then(response => {
-      dispatch(setUserProfileSuccess(response.data));
-    });
-  };
+export const getUserProfile = (userId) => async (dispatch) => {
+  let responseData = await usersAPI.getProfile(userId);
+  console.log('response', responseData);
+  dispatch(setUserProfileAC(responseData));
 };
+
+
+// export const setUserProfile = () => {
+//   return (dispatch) => {
+//     profileAPI.setUserProfile().then(response => {
+//       dispatch(setUserProfileAC(response.data));
+//     });
+//   };
+// };
 
 export default profileReducer;

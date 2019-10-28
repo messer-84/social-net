@@ -1,14 +1,12 @@
 import React from "react";
 import {NavLink} from 'react-router-dom';
-import styles from "./users.module.css";
+import s from "./users.module.css";
 import userPhoto from "../../assets/img/user.png";
 
 
 const Users = (props) => {
   const {totalUsersCount, pageSize} = props;
   console.log('this.props',props);
-
-
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
 
   let pages = [];
@@ -18,11 +16,11 @@ const Users = (props) => {
 
   return (
     <div>
-      <div>
+      <div className={s.pagination}>
         {pages.map(p => {
           return (
             <span key={p}
-                  className={props.currentPage === p ? styles.selectedPage : ""}
+                  className={props.currentPage === p ? s.selectedPage : ""}
                   onClick={() => props.onPageChanged(p)}
             >{p}</span>)
         })}
@@ -34,7 +32,7 @@ const Users = (props) => {
               <div>
                 <NavLink to={'/profile/' + user.id}>
                   <img src={user.photos.small !== null ? user.photos.small : userPhoto} alt=""
-                       className={styles.userPhoto}/>
+                       className={s.userPhoto}/>
                 </NavLink>
               </div>
               <div>

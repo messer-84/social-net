@@ -4,6 +4,9 @@ import Preloader from "../../commons/Preloader/Preloader";
 import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
+    if(props){
+        console.log('prof inf props', props);
+    }
   if (!props.profile) {
     return <Preloader/>
   }
@@ -12,7 +15,9 @@ const ProfileInfo = (props) => {
     <div className={s.profileInfo}>
       <div className={s.descriptionBlock}>
         <img src={props.profile.photos.large} alt=""/>
-        <ProfileStatus status={"hello my friend"} />
+          <div>{props.profile.fullName}</div>
+
+          <ProfileStatus status={'status ' + props.profile.userId} />
       </div>
     </div>
   )

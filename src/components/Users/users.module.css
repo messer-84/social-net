@@ -3,4 +3,13 @@
 }
 .selectedPage{
     font-weight: 700;
+    border: 1px solid #000;
+}
+.pagination{
+    display: flex;
+    flex-wrap: wrap;
+}
+.pagination span{
+    padding: 5px;
+    line-height: 20px;
 }

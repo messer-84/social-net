@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css';
-import {Route} from "react-router-dom";
+import React from "react";
+import s from "./App.module.css";
+import { Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -14,22 +14,23 @@ import LoginPage from "./components/Login/Login";
 
 const App = () => {
   return (
-    <div className='app-wrapper'>
-      <HeaderContainer/>
-      <div className="main">
-        <Sidebar/>
-        <div className="app-wrapper-content">
-          <Route path="/profile" component={ProfileContainer}/>
-          <Route path="/messages" component={DialogsContainer}/>
-          <Route path="/users" components={UsersContainer}/>
-          <Route path="/news" component={News}/>
-          <Route path="/music" component={Music}/>
-          <Route path="/settings" component={Settings}/>
-          <Route path="/users" component={UsersContainer}/>
-          <Route path="/login" component={LoginPage}/>
+    <div className={s.appWrapper}>
+      <HeaderContainer />
+      <div className={s.main}>
+        <Sidebar />
+        <div className={s.appWrapperContent}>
+          {/*<Route path="/profile" component={ProfileContainer}/>*/}
+          <Route path="/profile/:userId?" component={ProfileContainer} />
+          <Route path="/messages" component={DialogsContainer} />
+          <Route path="/users" components={UsersContainer} />
+          <Route path="/news" component={News} />
+          <Route path="/music" component={Music} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/users" component={UsersContainer} />
+          <Route path="/login" component={LoginPage} />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
