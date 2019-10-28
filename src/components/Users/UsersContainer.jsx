@@ -69,7 +69,7 @@ const mapDispatchToProps = {
 
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withAuthRedirect
+    withAuthRedirect,
+  connect(mapStateToProps, mapDispatchToProps)
 )(UsersContainer);
 

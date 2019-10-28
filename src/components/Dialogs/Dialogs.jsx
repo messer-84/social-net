@@ -18,7 +18,7 @@ const Dialogs = (props) => {
     const text = newMsgElement.current.value;
     newMessageChange(text);
   };
-  if(!this.props.isAuth) return <Redirect to='/login' />;
+  if(!props.isAuth) return <Redirect to='/login' />;
 
   return (
     <div className={s.dialogsBlock}>
