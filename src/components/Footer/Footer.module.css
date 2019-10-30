@@ -11,7 +11,7 @@
     top: 0;
     height: 100%;
     background: #231f20;
-    width: 3000px;
+    width: 100vw;
     transform: translate(-50%, 0);
 }
 
