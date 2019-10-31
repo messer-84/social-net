@@ -5,15 +5,21 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import { Redirect } from "react-router";
 import { Field, reduxForm } from "redux-form";
+import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {Textarea} from "../commons/FormsControls/FormsControls";
+
+const maxLength10 = maxLengthCreator(10);
 
 const AddMessageForm = props => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
         <Field
-          component={"textarea"}
+          component={Textarea}
           name={"newMessageBody"}
           placeholder={"Enter your message"}
+          validate={[required, maxLength10]}
+
         />
       </div>
       <div>
@@ -37,9 +43,7 @@ const Dialogs = props => {
   };
 
   if (!props.isAuth) return <Redirect to="/login" />;
-  const onSubmit = formData => {
-    // addNewMessage()
-  };
+
   return (
     <div className={s.dialogsBlock}>
       <div className={s.dialogsItems}>
