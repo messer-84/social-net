@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import Users from './Users';
 import Preloader from "../commons/Preloader/Preloader";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {
   follow,
   setCurrentPageAC,
@@ -69,7 +68,6 @@ const mapDispatchToProps = {
 
 
 export default compose(
-    withAuthRedirect,
   connect(mapStateToProps, mapDispatchToProps)
 )(UsersContainer);
 
